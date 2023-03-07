@@ -1,0 +1,78 @@
+header{
+    text-align: center;
+    background-color: lightgreen;
+}
+
+.counter {
+    margin: 30px 10px 30px 10px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px 0;
+}
+
+.add-button:hover{
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.counter-name{
+    margin: 10px;
+    width:30%;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');.counter-value{
+    font-family: 'Ubuntu Mono', monospace;
+    margin: 20px 40px;
+    font-size: 35px;
+}
+
+.counterNameInput{
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.counterIncrementButton{
+    margin: 10px;
+    background-color: orange;
+    font-size: 20px;
+    width: 50px;
+    height: 40px;
+    transition: all 0.4s;
+}
+
+.counterIncrementButton:hover{
+    transition: scale(1.2);
+    background-color: transparent;
+}
+
+.counterDecrementButton {
+    margin: 10px;
+    font-size: 20px;
+    color:black;
+    background-color: lightseagreen;
+    width: 50px;
+    height: 40px;
+    transition: all 0.4s;
+}
+
+.counterDecrementButton:hover {
+    transition: scale(1.2);
+    background-color: transparent;
+}
+
+.RemoveButton{
+    margin: 10px 10px 10px 120px;
+    font-weight: bold;
+    font-size: 15px;
+    width: 60px;
+    height: 40px;
+    background-color: red;
+    transition: all 0.4s;
+}
+
+.RemoveButton:hover {
+    transition: scale(1.2);
+    background-color: transparent;
+}
