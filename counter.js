@@ -130,11 +130,9 @@ document.addEventListener("DOMContentLoaded", function () {
     addCounterButton.addEventListener("click", function () {
         let counterNameInput = document.getElementById("counter-name");
         let counterName = counterNameInput.value.trim();
-        if (counterName !== "") {
-            addCounter(counterName);
-            counterNameInput.value = "";
-            renderCounters();
-        }
+        addCounter(counterName);
+        counterNameInput.value = "";
+        renderCounters();
     });
     renderCounters();
 });
