@@ -1,6 +1,37 @@
 //各カウンターを格納する配列
 let counters = [];
 
+let incrementSE = document.getElementById("incrementSE");
+let decrementSE = document.getElementById("decrementSE");
+let seVolume = document.getElementById("volume");
+let volumeRange = document.getElementById("vol_range");
+incrementSE.volume = seVolume.value*0.5;
+decrementSE.volume = seVolume.value*0.25;
+
+seVolume.addEventListener("change", function(){
+    volume = seVolume.value;
+    incrementSE.volume = volume*0.5;
+    decrementSE.volume = volume*0.25;
+    volumeRange.textContent = volume;
+});
+
+let muteButton = document.getElementById("mute-button");
+
+
+//SEのミュート切り替え
+function mute() {
+    if (incrementSE.muted && decrementSE.muted) {
+        incrementSE.muted = false;
+        decrementSE.muted = false;
+        muteButton.innerText = "カウントアップ/ダウン時のSEをミュートする";
+    }
+    else {
+        incrementSE.muted = true;
+        decrementSE.muted = true;
+        muteButton.innerText = "カウントアップ/ダウン時のSEのミュートを解除する";
+    }
+}
+
 //カウンターを追加する関数
 function addCounter(name) {
     counters.push({ name: name, count: 0 });
@@ -20,6 +51,11 @@ function updateCounter(index, count) {
 //カウンターの名前を更新する関数
 function updateCounterName(index, name) {
     counters[index].name = name;
+}
+
+//カウンターの値を0にリセットする関数
+function resetCounter(index) {
+    counters[index].count = 0;
 }
 
 function renderCounters() {
@@ -50,6 +86,7 @@ function renderCounters() {
         counterIncrementButton.addEventListener("click", function () {
             let count = counters[i].count + 1;
             updateCounter(i, count);
+            incrementSE.play();
             counterValueSpan.innerText = count;
         });
         counterDiv.appendChild(counterIncrementButton);
@@ -60,13 +97,24 @@ function renderCounters() {
         counterDecrementButton.addEventListener("click", function () {
             let count = counters[i].count -1;
             updateCounter(i, count);
+            decrementSE.play();
             counterValueSpan.innerText = count;
         });
         counterDiv.appendChild(counterDecrementButton);
 
+        let resetButton = document.createElement("button");
+        resetButton.classList.add("resetButton");
+        resetButton.innerText = "カウントリセット";
+        resetButton.addEventListener("click", function () {
+            let count = 0;
+            resetCounter(i);
+            counterValueSpan.innerText = 0;
+        });
+        counterDiv.appendChild(resetButton);
+
         let counterRemoveButton = document.createElement("button");
         counterRemoveButton.classList.add("RemoveButton");
-        counterRemoveButton.innerText = "削除";
+        counterRemoveButton.innerText = "カウントを削除";
         counterRemoveButton.addEventListener("click", function () {
             removeCounter(i);
             renderCounters();

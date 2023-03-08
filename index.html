@@ -16,7 +16,29 @@
         <input type="text" id = "counter-name" class = "counter-name" placeholder="追加するカウンターの名前を入力してください">
         <button id = "add-counter" class = "add-button">カウンターを追加する</button>
     </div>
+
+    <div class = "audio">
+        <button class="mute-button" id="mute-button" onClick="mute()">カウントアップ/ダウン時のmuteの切り替え</button>
+        <p>SEの音量：
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
+            <span id="vol_range">0.5</span>
+        </p>
+    </div>
+
+
+
     <div id = "counters"></div>
+
+    <audio id="incrementSE">
+        <source src="./audio/incrementSE.mp3" type="audio/mp3">
+    </audio>
+
+    <audio id="decrementSE">
+        <source src="./audio/decrementSE.mp3" type="audio/mp3">
+    </audio>
+
+
+
 
     <script src = "counter.js"></script>
 </body>
